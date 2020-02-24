@@ -27,7 +27,7 @@
 						<li><a href="#one">How I Got Here</a></li>
 						<li><a href="#two">Things I Do</a></li>
 						<li><a href="#three">A Few Accomplishments</a></li>
-						<li><a href="#four">Hire Me</a></li>
+						<li><a href="#four">Blog</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -217,8 +217,18 @@
 								</div>
 							</section>
 
-						<!-- Four -->
+							<!-- four -->
 							<section id="four">
+								<div class="container">
+									<h3>Latest Blog Posts</h3>
+									<hr style="border-bottom: solid 3px #f4f4f4">
+									<div id="blog-posts" class="features">
+									</div>
+								</div>
+							</section>
+
+						<!-- five -->
+							<section id="five">
 								<div class="container">
 									<h3>I Can Help</h3>
 									<p>Contact me about Consulting, Contract, Freelance Opportunities or a Project you're excited about.</p>
@@ -595,6 +605,39 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/rss-parser.min.js"></script>
+			<script>
+
+				// Note: some RSS feeds can't be loaded in the browser due to CORS security.
+				// To get around this, you can use a proxy.
+				const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
+				let parser = new RSSParser();
+				parser.parseURL(CORS_PROXY + 'https://medium.com/feed/@alexroan/', function(err, feed) {
+					if (err) throw err;
+					count = 0;
+					for (let i = 0; i < 3; i++) {
+						const entry = feed.items[i];
+						printPost(entry);
+					}
+				});
+
+				function printPost(entry) {
+					article = document.createElement("article");
+
+					link = document.createElement("a");
+					link.setAttribute("href", entry.link);
+
+					h4 = document.createElement("h4");
+					h4.innerText = entry.title;
+
+					link.appendChild(h4);
+					article.appendChild(link);
+
+					blogs = document.getElementById('blog-posts');
+					blogs.appendChild(article);
+				}
+
+			</script>
 
 	</body>
 </html>
