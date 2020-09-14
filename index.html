@@ -56,15 +56,15 @@
 
 				function printPost(entry) {
 					article = document.createElement("article");
-
-					link = document.createElement("a");
-					link.setAttribute("href", entry.link);
+					var imgsc = "https://discourse-og-image-serverless.vercel.app/api?url=" + entry.link;
+					link = document.createElement("img");
+					link.setAttribute("src", imgsc);
 					link.setAttribute("target", "_blank");
 
 					h4 = document.createElement("h4");
 					h4.innerText = entry.title;
 
-					link.appendChild(h4);
+					
 					article.appendChild(link);
 
 					blogs = document.getElementById('blog-posts');
