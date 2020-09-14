@@ -1,14 +1,6 @@
 <!DOCTYPE HTML>
-<!--
-	Read Only by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		
-
 		<title>RSS Feed</title>
 		<meta name="description" content="FEED" />
 		<meta charset="utf-8" />
@@ -18,9 +10,8 @@
 	<body class="is-preload" id='bd">
 
 	
-							<section id="four">
-								
-							</section>
+							<div id="blog-posts" class="features">
+									</div>
 
 						
 			</div>
@@ -55,9 +46,11 @@
 					link = document.createElement("img");
 					link.setAttribute("src", imgsc);
 					link.setAttribute("target", "_blank");
-					blogs = document.getElementById('four');
-					blogs.appendChild(link);
-	
+					
+					article.appendChild(link);
+
+					blogs = document.getElementById('blog-posts');
+					blogs.appendChild(article);
 				}
 			</script>
 
